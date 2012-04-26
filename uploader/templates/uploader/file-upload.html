@@ -5,11 +5,13 @@
 <script type="text/javascript">
 $(function() {
 	$('#file_upload').uploadify({
-		'swf'      : "{% static 'images/uploadify.swf' %}",
-		'uploader' : "{% url uploader_fileupload %}",
-		'onUploadSuccess' : function(file, data, response) {
-			alert('The file was saved to: ' + data);
-		} 
+		'swf'             : "{% static 'images/uploadify.swf' %}",
+		'uploader'        : "{% url uploader_fileupload %}",
+		'fileTypeExts'    : '*.gif; *.jpg; *.png',
+		'fileTypeDesc'    : 'Image Files',
+		'onQueueComplete' : function(queueData) {
+			console.log(queueData);
+		}
 	});
 }); 
 </script>
