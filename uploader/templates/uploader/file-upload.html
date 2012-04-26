@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block head_extras %}
+{% load staticfiles %}
+<script type="text/javascript">
+$(function() {
+	$('#file_upload').uploadify({
+		'swf'      : "{% static 'images/uploadify.swf' %}",
+		'uploader' : "{% url uploader_fileupload %}",
+		'onUploadSuccess' : function(file, data, response) {
+			alert('The file was saved to: ' + data);
+		} 
+	});
+}); 
+</script>
+{% endblock head_extras %}
+
+{% block content %}
+<input type="file" name="file_upload" id="file_upload" />
+{% endblock content %}

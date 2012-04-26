@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{% block head_title %}Uploadify Test{% endblock %}</title>
+	
+	{% load staticfiles %}
+	<link type="text/css" rel="stylesheet" href="{% static 'css/uploadify.css' %}" />
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="{% static 'js/jquery.uploadify.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/global.js' %}"></script>
+	
+	{% block head_extras %}
+	{% endblock head_extras %}
+</head>
+<body>
+	{% block content %}
+	{% endblock content %}
+	
+	{% block body_extras %}
+	{% endblock body_extras %}
+</body>
+</html>

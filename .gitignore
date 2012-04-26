@@ -1,0 +1,5 @@
+.project
+.pydevproject
+uploader/*.pyc
+uploadify/*.pyc
+uploadify/lib/*.pyc
