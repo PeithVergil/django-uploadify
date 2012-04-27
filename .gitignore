@@ -1,5 +1,7 @@
 .project
 .pydevproject
+accounts/*.pyc
+images/*.pyc
 uploader/*.pyc
 uploadify/*.pyc
 uploadify/lib/*.pyc

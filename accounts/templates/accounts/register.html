@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row-fluid show-grid">
+	<div class="span12">
+		<form method="post" action="{% url account_register %}" class="well">
+			{% csrf_token %}
+			<ul id="registration">
+				<li class="fn">
+					{{ form.fname.label_tag }}
+					{{ form.fname }}
+					{{ form.fname.errors }}
+				</li>
+				<li class="ln">
+					{{ form.lname.label_tag }}
+					{{ form.lname }}
+					{{ form.lname.errors }}
+				</li>
+				<li>
+					{{ form.usrnm.label_tag }}
+					{{ form.usrnm }}
+					{{ form.usrnm.errors }}
+				</li>
+				<li>
+					{{ form.email.label_tag }}
+					{{ form.email }}
+					{{ form.email.errors }}
+				</li>
+				<li>
+					{{ form.pass1.label_tag }}
+					{{ form.pass1 }}
+					{{ form.pass1.errors }}
+				</li>
+				<li>
+					{{ form.pass2.label_tag }}
+					{{ form.pass2 }}
+					{{ form.pass2.errors }}
+				</li>
+				<li>
+					<input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+{% endblock content %}

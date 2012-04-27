@@ -5,19 +5,66 @@
 	<title>{% block head_title %}Uploadify Test{% endblock %}</title>
 	
 	{% load staticfiles %}
-	<link type="text/css" rel="stylesheet" href="{% static 'css/uploadify.css' %}" />
+	<!-- jQuery -->
+	<script type="text/javascript" src="{% static 'js/jquery/jquery.js' %}"></script>
+	<!-- jQuery -->
 	
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!-- Bootstrap CSS -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap/bootstrap-responsive.css' %}" />
+	<!-- Bootstrap CSS -->
 	
-	<script type="text/javascript" src="{% static 'js/jquery.uploadify.min.js' %}"></script>
+	<!-- Bootstrap JS -->
+	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-transition.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-dropdown.js' %}"></script>
+	<!-- Bootstrap JS -->
+	
+	<!-- Global CSS -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/global.css' %}" />
+	<!-- Global CSS -->
+	
+	<!-- Global JS -->
 	<script type="text/javascript" src="{% static 'js/global.js' %}"></script>
+	<!-- Global JS -->
 	
 	{% block head_extras %}
 	{% endblock head_extras %}
 </head>
 <body>
-	{% block content %}
-	{% endblock content %}
+	<div id="head">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a href="#" class="brand">Uploadipy</a>
+					
+					<ul id="navigation" class="nav pull-right">
+						<li><a href="/">Home</a></li>
+						<li class="divider-vertical" />
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Get started here <b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="{% url account_login %}">Login</a></li>
+								<li class="divider"></li>
+								<li><a href="{% url account_register %}">Register</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+    </div> <!-- #head -->
+    
+	<div id="body">
+		<div class="container">
+			{% block content %}
+			{% endblock content %}
+		</div>
+	</div> <!-- #body -->
+    	
+	<div id="foot">
+	</div> <!-- #foot -->
 	
 	{% block body_extras %}
 	{% endblock body_extras %}

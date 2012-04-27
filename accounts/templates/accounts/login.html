@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row-fluid show-grid">
+	<div class="span12">
+		<form method="post" action="{% url account_login %}" class="well">
+			{% csrf_token %}
+			<ul id="login">
+				<li>
+					{{ form.username.label_tag }}
+					{{ form.username }}
+					{{ form.username.errors }}
+				</li>
+				<li>
+					{{ form.password.label_tag }}
+					{{ form.password }}
+					{{ form.password.errors }}
+				</li>
+				<li>
+					<input type="submit" name="submit" value="Login" class="btn btn-primary" />
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>
+{% endblock content %}

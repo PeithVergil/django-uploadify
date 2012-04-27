@@ -5,6 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^uploader/', include('uploader.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
