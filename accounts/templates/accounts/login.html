@@ -3,6 +3,26 @@
 {% block content %}
 <div class="row-fluid show-grid">
 	<div class="span12">
+		{% if messages %}
+		<ul class="messages">
+		    {% for message in messages %}
+		    <li class="alert alert-info {% if message.tags %}{{ message.tags }}{% endif %}">
+		    	{{ message }}
+		    </li>
+		    {% endfor %}
+		</ul>
+		{% endif %}
+		
+		{% if form.non_field_errors %}
+		<ul class="errors">
+			{% for error in form.non_field_errors %}
+			<li class="alert alert-error">
+				{{ error }}
+			</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	
 		<form method="post" action="{% url account_login %}" class="well">
 			{% csrf_token %}
 			<ul id="login">
@@ -22,5 +42,15 @@
 			</ul>
 		</form>
 	</div>
+	
+	<!--
+	<div class="span6">
+		<div class="accounts txt-centered">
+			<a class="btn btn-primary btn-large reg-here" href="{% url account_register %}">
+				Register Here
+			</a>
+		<div>
+	</div>
+	-->
 </div>
 {% endblock content %}

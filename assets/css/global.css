@@ -2,7 +2,7 @@ body {
 	padding-top: 80px;
 }
 
-#login, #registration {
+#login, #registration, .messages, .errors {
 	list-style: none;
 	margin: 0;
 }
@@ -14,4 +14,13 @@ body {
 
 .errorlist {
 	color: #FF0000;
+}
+
+.reg-here {
+	font-size: 2.5em;
+	margin: 60px 0;
+}
+
+.txt-centered {
+	text-align: center;
 }

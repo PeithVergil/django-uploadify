@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
@@ -28,6 +29,10 @@ class AccountRegister(TemplateView):
             user.last_name  = lname
             
             user.save()
+            
+            messages.info(request,
+                '''Your new account has been created.
+                You may now login using your username and password.''')
             
             return redirect('account_login')
         else:
