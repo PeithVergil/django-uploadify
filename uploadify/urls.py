@@ -7,6 +7,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^uploader/', include('uploader.urls')),
+    url(r'^images/', include('images.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

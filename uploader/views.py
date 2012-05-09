@@ -8,10 +8,11 @@ class FileUpload(TemplateView):
     template_name = 'uploader/file-upload.html'
     
     def get(self, request, *args, **kwargs):
-        context = {
-            'session_nm': settings.SESSION_COOKIE_NAME,
-            'session_ky': request.session.session_key
-        }
+        context = self.get_context_data(**kwargs)
+        
+        context['session_nm'] = settings.SESSION_COOKIE_NAME
+        context['session_ky'] = request.session.session_key
+        
         return self.render_to_response(context)
     
 class FileUploadHandler(View):

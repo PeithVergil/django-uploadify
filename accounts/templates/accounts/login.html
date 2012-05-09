@@ -24,7 +24,12 @@
 		{% endif %}
 	
 		<form method="post" action="{% url account_login %}" class="well">
+			{% if next %}
+				<input type="hidden" name="next" value="{{ next }}" />
+			{% endif %}
+			
 			{% csrf_token %}
+			
 			<ul id="login">
 				<li>
 					{{ form.username.label_tag }}
