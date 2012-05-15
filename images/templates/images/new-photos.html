@@ -1,11 +1,46 @@
 {% extends "base.html" %}
 
+{% block head_extras %}
+	{% load staticfiles %}
+	<!-- Bootstrap Carousel -->
+	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-carousel.js' %}"></script>
+	<!-- Bootstrap Carousel -->
+	
+	<!-- Jcrop CSS -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/jcrop/jquery.jcrop.css' %}" />
+	<!-- Jcrop CSS -->
+	
+	<!-- Jcrop JS -->
+	<script type="text/javascript" src="{% static 'js/jcrop/jquery.jcrop.js' %}"></script>
+	<!-- Jcrop JS -->
+	
+	<script type="text/javascript">
+	$(function() {
+		$('.carousel').carousel();
+		
+		function onSelect(c) {
+			console.log(c);
+		}
+		
+		$('.uploaded-photo').Jcrop({
+			onSelect: onSelect
+		});
+	}); 
+	</script>
+{% endblock head_extras %}
+
 {% block content %}
-	{% for photo in image_list %}
-		<img src="{{ photo.image.url }}" />
-	{% endfor %}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	<br />
-	<br />
-	Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+	<div class="carousel slide" id="myCarousel">
+		<a data-slide="prev" href="#myCarousel" class="left carousel-control top" onclick="javascript: return false;" >‹</a>
+		<a data-slide="next" href="#myCarousel" class="right carousel-control top" onclick="javascript: return false;">›</a>
+		<div class="carousel-inner">
+			{% for photo in image_list %}
+			<div class="item {% if forloop.counter == 1 %}active{% endif %}">
+				<img src="{{ photo.image.url }}" class="uploaded-photo" />
+			</div>
+			{% endfor %}
+		</div>
+		<a data-slide="prev" href="#myCarousel" class="left carousel-control" onclick="javascript: return false;" >‹</a>
+		<a data-slide="next" href="#myCarousel" class="right carousel-control" onclick="javascript: return false;">›</a>
+	</div>
 {% endblock content %}

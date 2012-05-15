@@ -24,3 +24,19 @@ body {
 .txt-centered {
 	text-align: center;
 }
+
+.uploaded-photo {
+	/*max-width: 650px;*/
+}
+
+#myCarousel {
+	margin: 80px 0;
+}
+
+.carousel-control {
+    top: 105%;
+}
+
+.carousel-control.top {
+    top: -1%;
+}

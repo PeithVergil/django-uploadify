@@ -23,7 +23,7 @@ class FileUploadHandler(View):
         if user.is_authenticated():
             data = request.FILES['Filedata']
             
-            image = Image(image = data, owner = user)
+            image = Image(image=data, thumb=data, owner=user)
             image.save()
             
             return HttpResponse()

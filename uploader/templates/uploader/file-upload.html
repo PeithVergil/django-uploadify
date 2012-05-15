@@ -17,9 +17,10 @@
 			'swf'             : "{% static 'images/uploadify.swf' %}",
 			'uploader'        : "{% url uploader_filehandler %}",
 			'fileTypeExts'    : '*.gif; *.jpg; *.png',
-			'fileTypeDesc'    : 'Image Files',
+			'fileTypeDesc'    : 'Image File',
+			'multi'           : false,
 			'onQueueComplete' : function(queueData) {
-				console.log(queueData);
+				window.location = '{% url images_newphotos %}';
 			} 
 		});
 	}); 

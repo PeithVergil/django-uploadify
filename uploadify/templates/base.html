@@ -15,7 +15,6 @@
 	<!-- Bootstrap CSS -->
 	
 	<!-- Bootstrap JS -->
-	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-transition.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-dropdown.js' %}"></script>
 	<!-- Bootstrap JS -->
 	
@@ -43,7 +42,9 @@
 						<li class="dropdown">
 							{% if user.is_authenticated %}
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									Account <b class="caret"></b>
+									<i class="icon-white icon-user"></i>
+									{{ user.first_name }} {{ user.last_name }}
+									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="{% url account_logout %}">Logout</a></li>
