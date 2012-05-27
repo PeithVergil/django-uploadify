@@ -37,7 +37,12 @@
 					<a href="#" class="brand">Uploadipy</a>
 					
 					<ul id="navigation" class="nav pull-right">
-						<li><a href="/">Home</a></li>
+						<li>
+							<a href="/">Home</a>
+						</li>
+						<li>
+							<a href="{% url imahe_gallery %}">Gallery</a>
+						</li>
 						<li class="divider-vertical" />
 						<li class="dropdown">
 							{% if user.is_authenticated %}
@@ -61,6 +66,10 @@
 							{% endif %}
 						</li>
 					</ul>
+					<a href="{% url imahe_upload %}" class="btn btn-primary pull-right">
+						<i class="icon-upload icon-white"></i>
+						Upload Photo
+					</a>
 				</div>
 			</div>
 		</div>

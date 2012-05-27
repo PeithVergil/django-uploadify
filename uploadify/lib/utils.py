@@ -11,6 +11,8 @@ import random
 import string
 
 from django.conf import settings
+from django.http import HttpResponse
+from django.utils import simplejson
 
 ASCII_CHARS = string.ascii_letters + string.digits 
 
@@ -43,3 +45,7 @@ def make_directory(directory):
     except OSError, e:
         if e.errno != errno.EEXIST:
             raise e
+        
+def jsonResponse(data):
+    return HttpResponse(simplejson.dumps(data),
+        content_type = 'application/javascript; charset=utf8')

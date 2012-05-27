@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head_extras %}
+	{% load staticfiles %}
+	<!-- Uploadify CSS -->
+	<link type="text/css" rel="stylesheet" href="{% static 'imahe/css/uploadify/uploadify.css' %}" />
+	<!-- Uploadify CSS -->
+	
+	<!-- Uploadify JS -->
+	<script type="text/javascript" src="{% static 'imahe/js/uploadify/jquery.uploadify.js' %}"></script>
+	<!-- Uploadify JS -->
+	
+	<script type="text/javascript">
+	$(function() {
+		var formData = {
+			'{{ session_nm }}': '{{ session_ky }}'
+		};
+		
+		$('#file_upload').uploadify({
+			'swf'             : "{% static 'imahe/js/uploadify/uploadify.swf' %}",
+			'uploader'        : "{% url imahe_upload %}",
+			'fileTypeExts'    : '*.gif; *.jpg; *.png',
+			'fileTypeDesc'    : 'Image File',
+			'formData'        : formData,
+			'multi'           : false,
+			'onQueueComplete' : function(queueData) {
+				//window.location = '{% url images_newphotos %}';
+			} 
+		});
+	}); 
+	</script>
+{% endblock head_extras %}
+
+{% block content %}
+	<input type="file" name="file_upload" id="file_upload" />
+{% endblock content %}

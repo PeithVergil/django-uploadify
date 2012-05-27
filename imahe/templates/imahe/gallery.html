@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block head_extras %}
+	{% load staticfiles %}
+	<!-- Jcrop CSS -->
+	<link type="text/css" rel="stylesheet" href="{% static 'imahe/css/jcrop/jquery.jcrop.css' %}" />
+	<!-- Jcrop CSS -->
+	
+	<!-- Jcrop JS -->
+	<script type="text/javascript" src="{% static 'imahe/js/jcrop/jquery.jcrop.js' %}"></script>
+	<!-- Jcrop JS -->
+{% endblock head_extras %}
+
+{% block content %}
+	<ul class="thumbnails">
+	{% for photo in photo_list %}
+		<li class="span2">
+			<a class="thumbnail" href="{% url imahe_viewer pk=photo.id %}">
+				<img alt="" src="{{ photo.thumb.url }}" />
+			</a>
+		</li>
+	{% empty %}
+		<li>
+			<p>No photos available.</p>
+		</li>
+	{% endfor %}
+	</ul>
+{% endblock content %}

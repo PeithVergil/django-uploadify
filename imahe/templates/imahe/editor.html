@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row-fluid">
+		<div class="span7">
+			<img alt="" src="{{ photo.image.url }}" alt="{{ photo.title }}" />
+		</div>
+		<div class="span5">
+			<form method="post">
+				<div>
+					<input type="text" name="photo_title" value="{{ photo.title }}" placeholder="Photo title" />
+				</div>
+				<div>
+					{% if photo.description %}
+						<textarea name="photo_desc" id="photo_desc">{{ photo.description }}</textarea>
+					{% else %}
+						<textarea name="photo_desc" id="photo_desc" placeholder="Photo description"></textarea>
+					{% endif %}
+				</div>
+				<div>
+					<input type="submit" value="SAVE" class="btn btn-large btn-primary" />
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock content %}

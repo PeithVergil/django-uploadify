@@ -98,6 +98,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'uploader.middleware.UploadifyMiddleware',
+    'imahe.middleware.UploadifyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -143,6 +144,7 @@ INSTALLED_APPS = (
     'accounts',
     'uploader',
     'images',
+    'imahe',
 )
 
 # A sample logging configuration. The only tangible logging

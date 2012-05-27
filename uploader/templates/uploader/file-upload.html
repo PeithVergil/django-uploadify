@@ -3,18 +3,18 @@
 {% block head_extras %}
 	{% load staticfiles %}
 	<!-- Uploadify CSS -->
-	<link type="text/css" rel="stylesheet" href="{% static 'css/uploadify/uploadify.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'imahe/css/uploadify/uploadify.css' %}" />
 	<!-- Uploadify CSS -->
 	
 	<!-- Uploadify JS -->
-	<script type="text/javascript" src="{% static 'js/uploadify/jquery.uploadify.js' %}"></script>
+	<script type="text/javascript" src="{% static 'imahe/js/uploadify/jquery.uploadify.js' %}"></script>
 	<!-- Uploadify JS -->
 	
 	<script type="text/javascript">
 	$(function() {
 		$('#file_upload').uploadify({
+			'swf'             : "{% static 'imahe/js/uploadify/uploadify.swf' %}",
 			'formData'        : {'{{ session_nm }}': '{{ session_ky }}'},
-			'swf'             : "{% static 'images/uploadify.swf' %}",
 			'uploader'        : "{% url uploader_filehandler %}",
 			'fileTypeExts'    : '*.gif; *.jpg; *.png',
 			'fileTypeDesc'    : 'Image File',

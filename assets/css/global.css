@@ -29,14 +29,11 @@ body {
 	/*max-width: 650px;*/
 }
 
-#myCarousel {
-	margin: 80px 0;
+.my-row {
+	margin-bottom: 30px;
 }
 
-.carousel-control {
-    top: 105%;
-}
-
-.carousel-control.top {
-    top: -1%;
+.unwell {
+	background-color: #D9D9D9;
+	padding: 10px;
 }

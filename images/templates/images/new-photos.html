@@ -2,45 +2,129 @@
 
 {% block head_extras %}
 	{% load staticfiles %}
-	<!-- Bootstrap Carousel -->
-	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-carousel.js' %}"></script>
-	<!-- Bootstrap Carousel -->
-	
 	<!-- Jcrop CSS -->
-	<link type="text/css" rel="stylesheet" href="{% static 'css/jcrop/jquery.jcrop.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'imahe/css/jcrop/jquery.jcrop.css' %}" />
 	<!-- Jcrop CSS -->
 	
 	<!-- Jcrop JS -->
-	<script type="text/javascript" src="{% static 'js/jcrop/jquery.jcrop.js' %}"></script>
+	<script type="text/javascript" src="{% static 'imahe/js/jcrop/jquery.jcrop.js' %}"></script>
 	<!-- Jcrop JS -->
+	
+	<style type="text/css">
+	.form-horizontal .control-label {
+		width: 20px;
+	}
+	
+	.form-horizontal .controls {
+		margin-left: 40px;
+	}
+	.form-horizontal .form-actions {
+		padding-left: 40px;
+	}
+	
+	.form-actions {
+		background: none;
+	}
+	</style>
 	
 	<script type="text/javascript">
 	$(function() {
-		$('.carousel').carousel();
-		
-		function onSelect(c) {
-			console.log(c);
+		function onSelect(c, form) {
+			form.find('.x1').val(parseInt(c.x));
+			form.find('.y1').val(parseInt(c.y));
+			form.find('.x2').val(parseInt(c.x2));
+			form.find('.y2').val(parseInt(c.y2));
+			form.find('.w').val(parseInt(c.w));
+			form.find('.h').val(parseInt(c.h));
 		}
 		
-		$('.uploaded-photo').Jcrop({
-			onSelect: onSelect
+		function onSubmit(e, form) {
+			$.post('{% url images_crop %}', form.serialize(), function(response) {
+			});
+		}
+		
+		$('.uploaded-photo').each(function(i, obj) {
+			$(this).load(function() {
+				var $this = $(this);
+				
+				var src = $this.attr('src');
+				
+				var img = $('<img/>').attr('src', src).load(function() {
+					var w = this.width;
+					var h = this.height;
+					
+					$.Jcrop('#jc_image'+i, {
+						onChange: function(c) {
+							onSelect(c, form);
+						},
+						onSelect: function(c) {
+							onSelect(c, form);
+						},
+						aspectRatio: 1,
+						trueSize: [w, h],
+						minSize: [150, 150]
+					});
+				});
+			});
+			
+			var form = $('#form'+i);
+			
+			form.submit(function(e) {
+				e.preventDefault();
+				onSubmit(e, form);
+			});
 		});
 	}); 
 	</script>
 {% endblock head_extras %}
 
 {% block content %}
-	<div class="carousel slide" id="myCarousel">
-		<a data-slide="prev" href="#myCarousel" class="left carousel-control top" onclick="javascript: return false;" >‹</a>
-		<a data-slide="next" href="#myCarousel" class="right carousel-control top" onclick="javascript: return false;">›</a>
-		<div class="carousel-inner">
-			{% for photo in image_list %}
-			<div class="item {% if forloop.counter == 1 %}active{% endif %}">
-				<img src="{{ photo.image.url }}" class="uploaded-photo" />
+	{% for photo in image_list %}
+	<div class="my-row unwell">
+		<div class="row-fluid show-grid">
+			<div class="span8">
+				<img src="{{ photo.image.url }}" class="uploaded-photo" id="jc_image{{ forloop.counter0 }}" />
 			</div>
-			{% endfor %}
+			<div class="span4">
+				<form id="form{{ forloop.counter0 }}" class="form-horizontal">
+					<input type="hidden" name="id" value="{{ photo.id }}" />
+					<input type="hidden" name="x2" value="0" class="x2" />
+					<input type="hidden" name="y2" value="0" class="y2" />
+					
+					<div class="control-group">
+						<label class="control-label" for="x1{{ forloop.counter0 }}">X</label>
+						<div class="controls">
+							<input type="text" name="x1" value="0" class="disabled x1" id="x1{{ forloop.counter0 }}" readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="y1{{ forloop.counter0 }}">Y</label>
+						<div class="controls">
+							<input type="text" name="y1" value="0" class="disabled y1" id="y1{{ forloop.counter0 }}" readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="w{{ forloop.counter0 }}">W</label>
+						<div class="controls">
+							<input type="text" name="w" value="0" class="disabled w" id="w{{ forloop.counter0 }}" readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="h{{ forloop.counter0 }}">H</label>
+						<div class="controls">
+							<input type="text" name="h" value="0" class="disabled h" id="h{{ forloop.counter0 }}" readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<input type="submit" value="Crop Image" class="btn btn-large btn-primary" />
+					</div>
+				</form>
+			</div>
 		</div>
-		<a data-slide="prev" href="#myCarousel" class="left carousel-control" onclick="javascript: return false;" >‹</a>
-		<a data-slide="next" href="#myCarousel" class="right carousel-control" onclick="javascript: return false;">›</a>
 	</div>
+	{% endfor %}
 {% endblock content %}
