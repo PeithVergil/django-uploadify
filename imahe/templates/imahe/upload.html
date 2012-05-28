@@ -23,9 +23,10 @@
 			'fileTypeDesc'    : 'Image File',
 			'formData'        : formData,
 			'multi'           : false,
-			'onQueueComplete' : function(queueData) {
-				//window.location = '{% url images_newphotos %}';
-			} 
+			'onUploadSuccess' : function(event, data) {
+				var data = $.parseJSON(data);
+				window.location = data.redirect;
+			}
 		});
 	}); 
 	</script>
