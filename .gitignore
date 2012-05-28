@@ -2,6 +2,7 @@
 .pydevproject
 accounts/*.pyc
 images/*.pyc
+imahe/*.pyc
 media/uploads
 uploader/*.pyc
 uploadify/*.pyc

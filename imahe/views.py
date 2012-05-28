@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, TemplateView
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
@@ -32,6 +33,7 @@ class Upload(TemplateView):
             imaging.fit(photo.thumb.path)
             
             return utils.jsonResponse({
+                'redirect': reverse('imahe_editor', args=[photo.id]),
                 'message': 'Photo uploaded',
                 'status': 'OK'
             })
