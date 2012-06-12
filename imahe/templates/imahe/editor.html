@@ -9,9 +9,15 @@
 			<form method="post">
 				<div>
 					{{ form.title }}
+					{% for error in form.title.errors %}
+						<p class="alert alert-error">{{ error }}</p>
+					{% endfor %}
 				</div>
 				<div>
-					{{ form.descr }}
+					{{ form.description }}
+					{% for error in form.description.errors %}
+						<p class="alert alert-error">{{ error }}</p>
+					{% endfor %}
 				</div>
 				<div>
 					<input type="submit" value="SAVE" class="btn btn-large btn-primary" />
