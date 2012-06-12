@@ -14,7 +14,7 @@
 		{% endif %}
 		
 		{% if form.non_field_errors %}
-		<ul class="errors">
+		<ul class="errors nostyle">
 			{% for error in form.non_field_errors %}
 			<li class="alert alert-error">
 				{{ error }}
@@ -30,7 +30,7 @@
 			
 			{% csrf_token %}
 			
-			<ul id="login">
+			<ul id="login" class="nostyle">
 				<li>
 					{{ form.username.label_tag }}
 					{{ form.username }}

@@ -4,6 +4,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
 
+from imahe.forms import PhotoEditForm
 from imahe.models import Photo
 from uploadify.lib import imaging, utils
 
@@ -77,3 +78,8 @@ class ImageEditor(DetailView):
     template_name = 'imahe/editor.html'
     context_object_name = 'photo'
     model = Photo
+    
+    def get_context_data(self, **kwargs):
+        context = DetailView.get_context_data(self, **kwargs)
+        context['form'] = PhotoEditForm()
+        return context
