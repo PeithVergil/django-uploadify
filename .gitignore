@@ -1,5 +1,7 @@
 .project
 .pydevproject
+.settings/
+*.pyc
 accounts/*.pyc
 images/*.pyc
 imahe/*.pyc

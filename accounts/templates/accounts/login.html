@@ -4,7 +4,7 @@
 <div class="row-fluid show-grid">
 	<div class="span12">
 		{% if messages %}
-		<ul class="messages">
+		<ul class="messages nostyle">
 		    {% for message in messages %}
 		    <li class="alert alert-info {% if message.tags %}{{ message.tags }}{% endif %}">
 		    	{{ message }}

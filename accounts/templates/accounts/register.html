@@ -5,7 +5,7 @@
 	<div class="span12">
 		<form method="post" action="{% url account_register %}" class="well">
 			{% csrf_token %}
-			<ul id="registration">
+			<ul id="registration" class="nostyle">
 				<li class="fn">
 					{{ form.fname.label_tag }}
 					{{ form.fname }}
