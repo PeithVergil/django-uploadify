@@ -15,9 +15,19 @@
 	<ul class="thumbnails">
 	{% for photo in photo_list %}
 		<li class="span2">
-			<a class="thumbnail" href="{% url imahe_viewer pk=photo.id %}">
-				<img alt="" src="{{ photo.thumb.url }}" />
-			</a>
+			<div class="thumbnail">
+				<a href="{% url imahe_viewer pk=photo.id %}">
+					<img alt="" src="{{ photo.thumb.url }}" />
+				</a>
+				<div class="caption">
+					<h5>{{ photo.title }}</h5>
+					<div class="actions">
+						<a class="btn btn-mini pull-right" href="{% url imahe_editor pk=photo.id %}" title="Edit">
+							<i class="icon-edit"></i>
+						</a>
+					</div>
+				</div>
+			</div>
 		</li>
 	{% empty %}
 		<li>
