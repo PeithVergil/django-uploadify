@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^adventure/', include('adventure.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^uploader/', include('uploader.urls')),
     url(r'^images/', include('images.urls')),
