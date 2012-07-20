@@ -23,6 +23,10 @@
 					<h5>{{ photo.title }}</h5>
 					<div class="actions">
 						<a class="btn btn-mini pull-right" href="{% url imahe_editor pk=photo.id %}" title="Edit">
+							<i class="icon-remove"></i>
+						</a>
+						
+						<a class="btn btn-mini pull-right" href="{% url imahe_editor pk=photo.id %}" title="Delete">
 							<i class="icon-edit"></i>
 						</a>
 					</div>

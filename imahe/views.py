@@ -30,6 +30,8 @@ class Upload(TemplateView):
             data = request.FILES['Filedata']
             
             photo = Photo.objects.create(image=data, thumb=data, owner=user)
+            # Resize the photo so it has a width of 620 pixels
+            imaging.resizeWidth(photo.image.path)
             # Resize the thumbnail to 180x180 pixels
             imaging.fit(photo.thumb.path)
             

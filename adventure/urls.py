@@ -6,6 +6,6 @@ Created on Jun 27, 2012
 
 from django.conf.urls.defaults import patterns, url
 
-#urlpatterns = patterns('',
+urlpatterns = patterns('',
 #    url(r'^view/$', view, name='adventure_view')
-#)
+)

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>{% block head_title %}Chigitalk - Sige Talk!{% endblock head_title %}</title>
+	
+{% load staticfiles %}
+
+<!-- jQuery -->
+<script type="text/javascript" src="{% static 'js/jquery/jquery.js' %}"></script>
+<!-- jQuery -->
+
+<!-- Bootstrap CSS -->
+<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap/bootstrap-responsive.css' %}" />
+<!-- Bootstrap CSS -->
+
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-dropdown.js' %}"></script>
+<!-- Bootstrap JS -->
+
+<link type="text/css" rel="stylesheet/less" href="{% static 'less/style.less' %}" />
+
+<!-- LESS -->
+<script type="text/javascript" src="{% static 'js/less/less.js' %}"></script>
+<!-- LESS -->
+
+{% block head_extras %}
+{% endblock head_extras %}
+</head>
+<body>
+	<header>
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a href="#" class="brand">Uploadipy</a>
+					
+					<ul id="navigation" class="nav pull-right">
+						<li>
+							<a href="/">Home</a>
+						</li>
+						<li>
+							<a href="{% url imahe_gallery %}">Gallery</a>
+						</li>
+						<li class="divider-vertical" />
+						<li class="dropdown">
+							{% if user.is_authenticated %}
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="icon-white icon-user"></i>
+									{{ user.first_name }} {{ user.last_name }}
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="{% url account_logout %}">Logout</a></li>
+								</ul>
+							{% else %}
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									Get started <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="{% url account_login %}">Login</a></li>
+									<li class="divider"></li>
+									<li><a href="{% url account_register %}">Register</a></li>
+								</ul>
+							{% endif %}
+						</li>
+					</ul>
+					
+					<div class="btn-group pull-right">
+						<a href="{% url imahe_upload %}" class="btn btn-primary">
+							<i class="icon-upload icon-white"></i>
+							Upload Photo
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<section id="content">
+		<div class="container">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+	</section>
+	
+	<footer>
+		<div class="container">
+			<hr />
+			&copy; 2012 Chigigo Software
+		</div>
+	</footer>
+	
+	{% block body_extras %}
+	{% endblock body_extras %}
+</body>
+</html>
