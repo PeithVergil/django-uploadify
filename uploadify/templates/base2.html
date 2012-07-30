@@ -19,16 +19,17 @@
 <!-- Bootstrap JS -->
 <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-dropdown.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-collapse.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-transition.js' %}"></script>
 <!-- Bootstrap JS -->
 
 <link type="text/css" rel="stylesheet/less" href="{% static 'less/style.less' %}" />
 
+{% block head_extras %}
+{% endblock head_extras %}
+
 <!-- LESS -->
 <script type="text/javascript" src="{% static 'js/less/less.js' %}"></script>
 <!-- LESS -->
-
-{% block head_extras %}
-{% endblock head_extras %}
 </head>
 <body>
 	<header>
@@ -99,7 +100,11 @@
 	<footer>
 		<hr />
 		<div class="container">
-			&copy; 2012 Chigigo Software
+			<div class="row">
+				<div class="span12">
+					&copy; 2012 Chigigo Software
+				</div>
+			</div>
 		</div>
 	</footer>
 	
