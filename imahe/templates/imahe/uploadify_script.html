@@ -1,0 +1,19 @@
+<script>
+jQuery(function($) {
+	var formData = {
+		'{{ session_nm }}': '{{ session_ky }}'
+	};
+	$('{{ css_selector }}').uploadify({
+		'swf'             : "{% static 'imahe/js/uploadify/uploadify.swf' %}",
+		'uploader'        : "{% url imahe_upload %}",
+		'fileTypeExts'    : '*.gif; *.jpg; *.png',
+		'fileTypeDesc'    : 'Image File',
+		'formData'        : formData,
+		'multi'           : false,
+		'onUploadSuccess' : function(event, data) {
+			var data = $.parseJSON(data);
+			window.location = data.redirect;
+		}
+	});
+});
+</script>

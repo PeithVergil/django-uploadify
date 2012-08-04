@@ -5,20 +5,39 @@
 		background: url("../images/i-heart-s.png") no-repeat;
 		display: block;
 		height: 32px;
-		margin: 2px;
+		margin: 2px auto;
 		width: 58px;
 	}
 	
-	#heart {
-		font-size: @fontsize;
-		font-weight: bold;
-		height: @fontsize;
-		line-height: @fontsize;
-		width: 90%;
+	#addPostForm {
+		margin: 0;
+		
+		#id_content {
+			font-size: @fontsize;
+			font-weight: bold;
+			height: @fontsize;
+			line-height: @fontsize;
+			margin: 0;
+			width: 90%;
+		}
 	}
 	
-	#desc {
-		height: 90px;
-		width: 98%;
+	.modal-body {
+		.row-fluid {
+			margin: 20px 0;
+			
+			#file_upload {
+				margin: 0;
+			}
+		}
 	}
+}
+
+.uploadify-button, .uploadify:hover .uploadify-button {
+	background-color: #000;
+	background-image: none;
+	border: none;
+}
+.uploadify:hover .uploadify-button {
+	color: #c4c4c4;
 }
