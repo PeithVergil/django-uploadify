@@ -36,11 +36,11 @@ class AllPost(TemplateView):
             return self._b(request, context, *args, **kwargs)
     
     def _a(self, request, context, *args, **kwargs):
-        context['posts'] = Post.objects.filter(author = request.user)
+        context['posts'] = Post.objects.filter(author = request.user).order_by('-postdate')
         return self.render_to_response(context)
     
     def _b(self, request, context, *args, **kwargs):
-        context['posts'] = Post.objects.all()
+        context['posts'] = Post.objects.all().order_by('-postdate')
         return self.render_to_response(context)
     
 class AddPost(JSONResponseMixin, View):
@@ -79,8 +79,8 @@ class AddImage(JSONResponseMixin, View):
             
             # Resize the photo so it has a width of 620 pixels
             imaging.resizeWidth(image.image.path)
-            # Resize the thumbnail to 180x180 pixels
-            imaging.fit(image.thumb.path)
+            # Resize the thumbnail to 80x80 pixels
+            imaging.resizeThumb(image.thumb.path)
             
             context['message'] = 'New image added.'
             context['imageid'] = image.id

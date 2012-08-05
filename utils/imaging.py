@@ -33,3 +33,8 @@ def resizeWidth(path, width=620):
     maxh = int(rtio * img.size[1])
     
     img.resize((maxw, maxh), Image.ANTIALIAS).save(path)
+    
+def resizeThumb(path, size=(80, 80)):
+    img = Image.open(path)
+    fit = ImageOps.fit(img, size, Image.ANTIALIAS)
+    fit.save(path)

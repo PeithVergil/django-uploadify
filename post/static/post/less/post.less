@@ -1,5 +1,5 @@
 #addPostModal {
-	@fontsize: 25px;
+	@fontsize: 20px;
 	
 	.iheart {
 		background: url("../images/i-heart-s.png") no-repeat;
@@ -15,7 +15,7 @@
 		#id_content {
 			font-size: @fontsize;
 			font-weight: bold;
-			height: @fontsize;
+			height: @fontsize + 5;
 			line-height: @fontsize;
 			margin: 0;
 			width: 90%;
@@ -40,4 +40,71 @@
 }
 .uploadify:hover .uploadify-button {
 	color: #c4c4c4;
+}
+
+#posts {
+	.ListStyle {
+		list-style: none;
+		margin: 0;
+	}
+	
+	.FloatLeft {
+		float: left;
+	}
+	
+	.FloatRight {
+		float: right;
+	}
+	
+	.ClearFloat {
+		clear: both;
+	}
+	
+	.ListStyle;
+	
+	.post {
+		margin-bottom: 20px;
+		
+		.post-texts {
+			margin-bottom: 10px;
+			
+			.post-iheart {
+				background: url("../images/post-iheart.png") no-repeat;
+				display: inline-block;
+				height: 32px;
+				width: 59px;
+			}
+			
+			.post-content {
+				@fontsize: 30px;
+				
+				font-size: @fontsize;
+				font-weight: bold;
+				line-height: @fontsize;
+			}
+		}
+		
+		.post-images {
+			.ListStyle;
+			.FloatLeft;
+			
+			.post-image {
+				.FloatLeft;
+				
+				margin-left: 5px;
+				
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+		}
+		
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+	.clear {
+		.ClearFloat;
+	}
 }

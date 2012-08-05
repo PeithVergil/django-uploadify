@@ -1,15 +1,16 @@
 {% extends "base2.html" %}
 
 {% block head_extras %}
-{% load staticfiles %}
-<!-- Bootstrap Modal -->
-<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-modal.js' %}"></script>
-<!-- Bootstrap Modal -->
-
-<link type="text/css" rel="stylesheet/less" href="{% static 'post/less/post.less' %}" />
-
-{% load uploadify_tags %}
-{% uploadify_dependencies %}
+	{% load staticfiles %}
+	
+	<!-- Bootstrap Modal -->
+	<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap-modal.js' %}"></script>
+	<!-- Bootstrap Modal -->
+	
+	<link type="text/css" rel="stylesheet/less" href="{% static 'post/less/post.less' %}" />
+	
+	{% load uploadify_tags %}
+	{% uploadify_dependencies %}
 {% endblock head_extras %}
 
 {% block content %}
@@ -23,12 +24,15 @@
 	<div class="row">
 		<div class="span12">
 			<div class="pads">
+				<ul id="posts">
 				{% for post in posts %}
-					<div>
-						<p>i heart {{ post.content }}</p>
-						<ul>
+					<li class="post">
+						<div class="post-texts">
+							<i class="post-iheart"></i> <span class="post-content">{{ post.content }}</span>
+						</div>
+						<ul class="post-images">
 							{% for image in post.postimages.all %}
-								<li>
+								<li class="post-image">
 									<img src="{{ image.thumb.url }}" />
 								</li>
 							{% empty %}
@@ -37,10 +41,14 @@
 								</li>
 							{% endfor %}
 						</ul>
-					</div>
+						<div class="clear"></div>
+					</li>
 				{% empty %}
-					<p>No posts available.</p>
+					<li>
+						<p>No posts available.</p>
+					</li>
 				{% endfor %}
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -95,11 +103,9 @@ jQuery(function($) {
 		'width'           : 210,
 		'auto'            : false,
 		'queueID'         : 'uploadify-queue',
-		'onUploadSuccess' : function(event, data) {
-			var data = $.parseJSON(data);
-			modalform.modal('hide');
-			console.log(data);
-		}
+		'onQueueComplete' : function(response) {
+			window.location = '{% url post_all %}';
+        }
 	});
 });
 </script>

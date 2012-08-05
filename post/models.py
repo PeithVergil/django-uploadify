@@ -14,8 +14,9 @@ def thumb_upload(instance, filename):
 
 def _upload(instance, filename, path):
     today = datetime.datetime.now()
+    randname = utils.get_random_string()
     file_nm, file_ex = os.path.splitext(filename)
-    return path % (instance.post.author.id, today.year, today.month, today.day, utils.get_random_string(), file_ex)
+    return path % (instance.post.author.id, today.year, today.month, today.day, randname, file_ex)
 
 class Post(models.Model):
     author = models.ForeignKey(User)
